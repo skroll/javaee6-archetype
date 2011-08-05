@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <!-- Master pom to configure the entire project from a central location -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <packaging>pom</packaging>
+  <name>${artifactId}</name>
+
+  <modules>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <!-- Compile all java sources with the same version -->
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler.plugin.version}</version>
+        <configuration>
+          <source>${compiler.source}</source>
+          <target>${compiler.target}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${javadoc.plugin.version}</version>
+        <configuration>
+        </configuration>
+        <executions>
+          <execution>
+            <id>aggregate</id>
+            <goals>
+              <goal>aggregate</goal>
+            </goals>
+            <phase>site</phase>
+            <configuration>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <!-- Configure common plugin versions to simplify child poms -->
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${jar.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-ejb-plugin</artifactId>
+          <version>${ejb.plugin.version}</version>
+          <configuration>
+            <ejbVersion>${ejb.version}</ejbVersion>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${war.plugin.version}</version>
+          <configuration>
+            <!-- Java EE 6 does not require a web.xml file -->
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${surefire.plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Include the JBoss' Java EE 6 APIs -->
+      <dependency>
+        <groupId>org.jboss.spec</groupId>
+        <artifactId>jboss-javaee-web-6.0</artifactId>
+        <version>${jboss.javaee.stack.version}</version>
+        <type>pom</type>
+        <scope>provided</scope>
+      </dependency>
+      <!-- Annotation processor to generate the JPA 2.0 metamodel classes
+           for typesafe criteria queries -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-jpamodelgen</artifactId>
+        <version>${hibernate.jpamodelgen.version}</version>
+        <scope>provided</scope>
+        <!-- Excluded because it's provided by the Java EE 6 dependencies -->
+        <exclusions>
+          <exclusion>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.junit</groupId>
+        <artifactId>arquillian-junit-container</artifactId>
+        <version>${arquillian.junit.container.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.as</groupId>
+        <artifactId>jboss-as-arquillian-container-managed</artifactId>
+        <version>${jboss.as.arquillian.container.managed.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <!-- The JBoss Community public repository is a composite repository
+       of several major repositories -->
+    <!-- see http://community.jboss.org/wiki/MavenGettingStarted-Users -->
+    <repository>
+      <id>jboss-public-repository</id>
+      <name>JBoss Repository</name>
+      <url>http://repository.jboss.org/nexus/content/groups/public</url>
+      <!-- These optional flags are designed to speed up your builds by
+         reducing remote server calls -->
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jboss-public-repository</id>
+      <name>JBoss Repository</name>
+      <url>http://repository.jboss.org/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <compiler.source>${compilerSource}</compiler.source>
+    <compiler.target>${compilerTarget}</compiler.target>
+    <compiler.plugin.version>${compilerPluginVersion}</compiler.plugin.version>
+    <jar.plugin.version>${jarPluginVersion}</jar.plugin.version>
+    <ejb.plugin.version>${ejbPluginVersion}</ejb.plugin.version>
+    <war.plugin.version>${warPluginVersion}</war.plugin.version>
+    <surefire.plugin.version>${surefirePluginVersion}</surefire.plugin.version>
+    <javadoc.plugin.version>${javadocPluginVersion}</javadoc.plugin.version>
+    <jboss.javaee.stack.version>${jbossJavaeeStackVersion}</jboss.javaee.stack.version>
+    <hibernate.jpamodelgen.version>${hibernateJpamodelgenVersion}</hibernate.jpamodelgen.version>
+    <junit.version>${junitVersion}</junit.version>
+    <ejb.version>${ejbVersion}</ejb.version>
+    <arquillian.junit.container.version>${arquillianJunitContainerVersion}</arquillian.junit.container.version>
+    <jboss.as.arquillian.container.managed.version>${jbossAsArquillianContainerManagedVersion}</jboss.as.arquillian.container.managed.version>
+  </properties>
+</project>
+

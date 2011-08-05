@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor id="javaee6" name="javaee6">
+  <requiredProperties>
+    <requiredProperty key="compilerSource">
+      <defaultValue>1.6</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="compilerTarget">
+      <defaultValue>1.6</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="compilerPluginVersion">
+      <defaultValue>2.3.2</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="jarPluginVersion">
+      <defaultValue>2.3.1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="ejbPluginVersion">
+      <defaultValue>2.3</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="warPluginVersion">
+      <defaultValue>2.1.1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="surefirePluginVersion">
+      <defaultValue>2.4.3</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="javadocPluginVersion">
+      <defaultValue>2.8</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="jbossJavaeeStackVersion">
+      <defaultValue>2.0.0.Final</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="hibernateJpamodelgenVersion">
+      <defaultValue>1.1.1.Final</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="junitVersion">
+      <defaultValue>4.8.1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="ejbVersion">
+      <defaultValue>3.1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="jbossAsArquillianContainerManagedVersion">
+      <defaultValue>7.0.0.CR1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="arquillianJunitContainerVersion">
+      <defaultValue>1.0.0.CR1</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="projectDataSource">
+      <defaultValue>java:jboss/datasources/ExampleDS</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="projectTestDataSource">
+      <defaultValue>java:jboss/datasources/ExampleDS</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+
+  <modules>
+    <module name="${rootArtifactId}-model" id="${rootArtifactId}-model" dir="__rootArtifactId__-model">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module name="${rootArtifactId}-dao" id="${rootArtifactId}-dao" dir="__rootArtifactId__-dao">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module name="${rootArtifactId}-dao-jpa" id="${rootArtifactId}-dao-jpa" dir="__rootArtifactId__-dao-jpa">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/test/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module name="${rootArtifactId}-ejb" id="${rootArtifactId}-ejb" dir="__rootArtifactId__-ejb">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/test/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/test/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module name="${rootArtifactId}-web" id="${rootArtifactId}-web" dir="__rootArtifactId__-web">
+      <fileSets>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/webapp</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+</archetype-descriptor>
+
