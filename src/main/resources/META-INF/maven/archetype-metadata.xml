@@ -43,6 +43,9 @@
     <requiredProperty key="arquillianJunitContainerVersion">
       <defaultValue>1.0.0.CR1</defaultValue>
     </requiredProperty>
+    <requiredProperty key="seamSolderVersion">
+      <defaultValue>3.0.0.Final</defaultValue>
+    </requiredProperty>
     <requiredProperty key="projectDataSource">
       <defaultValue>java:jboss/datasources/ExampleDS</defaultValue>
     </requiredProperty>
