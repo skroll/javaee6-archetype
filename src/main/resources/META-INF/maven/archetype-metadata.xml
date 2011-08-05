@@ -118,6 +118,22 @@
         </fileSet>
       </fileSets>
     </module>
+    <module name="${rootArtifactId}-log" id="${rootArtifactId}-log" dir="__rootArtifactId__-log">
+      <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false" encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
     <module name="${rootArtifactId}-ejb" id="${rootArtifactId}-ejb" dir="__rootArtifactId__-ejb">
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
