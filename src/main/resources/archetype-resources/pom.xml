@@ -125,6 +125,11 @@
         <version>${junit.version}</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>org.jboss.seam.solder</groupId>
+        <artifactId>seam-solder</artifactId>
+        <version>${seam.solder.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -177,6 +182,7 @@
     <ejb.version>${ejbVersion}</ejb.version>
     <arquillian.junit.container.version>${arquillianJunitContainerVersion}</arquillian.junit.container.version>
     <jboss.as.arquillian.container.managed.version>${jbossAsArquillianContainerManagedVersion}</jboss.as.arquillian.container.managed.version>
+    <seam.solder.version>${seamSolderVersion}</seam.solder.version>
   </properties>
 </project>
 
