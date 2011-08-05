@@ -21,6 +21,10 @@
         <configuration>
           <source>${compiler.source}</source>
           <target>${compiler.target}</target>
+          <!-- Where to output translation files -->
+          <compilerArgument>
+            -AgeneratedTranslationFilesPath=${project.basedir}/target/generated-translation-files
+          </compilerArgument>
         </configuration>
       </plugin>
       <plugin>
@@ -130,6 +134,12 @@
         <artifactId>seam-solder</artifactId>
         <version>${seam.solder.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.jboss.seam.solder</groupId>
+        <artifactId>seam-solder-tooling</artifactId>
+        <version>${seam.solder.tooling.version}</version>
+        <scope>provided</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -183,6 +193,7 @@
     <arquillian.junit.container.version>${arquillianJunitContainerVersion}</arquillian.junit.container.version>
     <jboss.as.arquillian.container.managed.version>${jbossAsArquillianContainerManagedVersion}</jboss.as.arquillian.container.managed.version>
     <seam.solder.version>${seamSolderVersion}</seam.solder.version>
+    <seam.solder.tooling.version>${seamSolderToolingVersion}</seam.solder.tooling.version>
   </properties>
 </project>
 

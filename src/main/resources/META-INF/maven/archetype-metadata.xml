@@ -46,6 +46,9 @@
     <requiredProperty key="seamSolderVersion">
       <defaultValue>3.0.0.Final</defaultValue>
     </requiredProperty>
+    <requiredProperty key="seamSolderToolingVersion">
+      <defaultValue>3.0.0.Final</defaultValue>
+    </requiredProperty>
     <requiredProperty key="projectDataSource">
       <defaultValue>java:jboss/datasources/ExampleDS</defaultValue>
     </requiredProperty>
