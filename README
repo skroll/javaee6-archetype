@@ -1,0 +1,3 @@
+1) Install this archetype by running mvn install.
+2) Move to a directory that you want to create the project in and run:
+	mvn archetype:generate -DarchetypeGroupId=org.skroll -DarchetypeArtifactId=javaee6 -DarchetypeVersion=1.0 -DgroupId=com.yourcompany -DartifactId=projectname
