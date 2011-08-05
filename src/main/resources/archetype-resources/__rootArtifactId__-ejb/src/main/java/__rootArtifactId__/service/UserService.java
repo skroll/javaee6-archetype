@@ -6,11 +6,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.annotation.PostConstruct;
 
 import javax.transaction.UserTransaction;
 
 import ${groupId}.${rootArtifactId}.dao.UserDao;
 import ${groupId}.${rootArtifactId}.model.User;
+import ${groupId}.${rootArtifactId}.service.log.UserServiceLogger;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
@@ -21,6 +23,9 @@ public class UserService
 
 	@Inject
 	private UserTransaction utx;
+
+	@Inject
+	private UserServiceLogger log;
 
 	@Produces
 	@Named
@@ -42,6 +47,12 @@ public class UserService
 			utx.rollback();
 			throw e;
 		}
+	}
+
+	@PostConstruct
+	public void logInitialization()
+	{
+		log.logInitializing();
 	}
 }
 
