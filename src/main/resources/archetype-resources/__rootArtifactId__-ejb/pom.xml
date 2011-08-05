@@ -81,19 +81,7 @@
     </dependency>
     <dependency>
       <groupId>${groupId}</groupId>
-      <artifactId>${rootArtifactId}-dao</artifactId>
-      <version>${version}</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>${groupId}</groupId>
       <artifactId>${rootArtifactId}-model</artifactId>
-      <version>${version}</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>${groupId}</groupId>
-      <artifactId>${rootArtifactId}-log</artifactId>
       <version>${version}</version>
       <type>jar</type>
     </dependency>
