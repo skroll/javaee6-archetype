@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.dao.jpa.test;
+package ${groupId}.${rootArtifactId}.service.test;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.junit.runner.RunWith;
